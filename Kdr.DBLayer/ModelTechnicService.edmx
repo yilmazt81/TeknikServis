@@ -1,0 +1,1359 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TeknikProjeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CihazKargoGonderim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TamirTeslimId" Type="int" Nullable="false" />
+          <Property Name="GonderenPersonelId" Type="int" Nullable="false" />
+          <Property Name="GondermeTarihi" Type="datetime" Nullable="false" />
+          <Property Name="KargoFirmaId" Type="int" Nullable="false" />
+          <Property Name="GonderiNumarasi" Type="nvarchar" MaxLength="50" />
+          <Property Name="IlId" Type="int" Nullable="false" />
+          <Property Name="IlceId" Type="int" Nullable="false" />
+          <Property Name="Adres" Type="nvarchar" MaxLength="250" />
+          <Property Name="MusteriAdi" Type="nvarchar" MaxLength="70" />
+          <Property Name="GsmNo" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="CihazParca">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParcaAdi" Type="nvarchar" MaxLength="250" />
+          <Property Name="Barkod" Type="nvarchar" MaxLength="20" />
+          <Property Name="Fiyat" Type="money" />
+          <Property Name="StokAdet" Type="int" />
+          <Property Name="MontajUcreti" Type="money" />
+          <Property Name="Marka" Type="nvarchar" MaxLength="20" />
+          <Property Name="Model" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="CihazTamirParca">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TamirTeslimId" Type="int" Nullable="false" />
+          <Property Name="CihazParcaId" Type="int" Nullable="false" />
+          <Property Name="EkleyenPersonel" Type="int" />
+          <Property Name="EklemeTarihi" Type="datetime" />
+          <Property Name="ParcaBekliyor" Type="bit" />
+        </EntityType>
+        <EntityType Name="Il">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="IlAdi" Type="nvarchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="Ilce">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IlId" Type="int" Nullable="false" />
+          <Property Name="IlceAdi" Type="nvarchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="KargoFirma">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirmaAdi" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="KargoSube">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KargoFirmaId" Type="int" Nullable="false" />
+          <Property Name="SubeAdi" Type="nvarchar" MaxLength="50" />
+          <Property Name="TelefonNo" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Musteri">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TamAdi" Type="nvarchar" MaxLength="100" />
+          <Property Name="GsmNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="Eposta" Type="nvarchar" MaxLength="70" />
+          <Property Name="IlId" Type="int" />
+          <Property Name="IlceId" Type="int" />
+          <Property Name="Adres" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="PerformansRapor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RaportAdi" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProcedureName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Personel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KullaniciAdi" Type="nvarchar" MaxLength="20" />
+          <Property Name="Sifre" Type="nvarchar" MaxLength="20" />
+          <Property Name="Adi" Type="nvarchar" MaxLength="50" />
+          <Property Name="Soyadi" Type="nvarchar" MaxLength="50" />
+          <Property Name="Pasif" Type="bit" />
+          <Property Name="Gorev" Type="nvarchar" MaxLength="20" />
+          <Property Name="UstPersonelId" Type="int" />
+        </EntityType>
+        <EntityType Name="PersonelLoginSession">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonelId" Type="int" Nullable="false" />
+          <Property Name="GirisTarihi" Type="datetime" />
+          <Property Name="CikisTarihi" Type="datetime" />
+          <Property Name="BilgisayarAdi" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="TamirDurum">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="tinyint" Nullable="false" />
+          <Property Name="Aciklama" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="TamirTeslim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MusteriId" Type="int" Nullable="false" />
+          <Property Name="TeslimAlanPersonelId" Type="int" Nullable="false" />
+          <Property Name="IadeEdenPersonelId" Type="int" />
+          <Property Name="TamirEdenPersonelId" Type="int" />
+          <Property Name="Marka" Type="nvarchar" MaxLength="20" />
+          <Property Name="Model" Type="nvarchar" MaxLength="20" />
+          <Property Name="SeriNo" Type="nvarchar" MaxLength="30" />
+          <Property Name="MusteriSorunAciklama" Type="nvarchar(max)" />
+          <Property Name="TeknikPersonelAciklama" Type="nvarchar(max)" />
+          <Property Name="TeslimTarihi" Type="datetime" />
+          <Property Name="IadeTarihi" Type="datetime" />
+          <Property Name="TeslimAlinanAksesuar" Type="nvarchar" MaxLength="250" />
+          <Property Name="TamirFiyat" Type="money" />
+          <Property Name="Barcode" Type="nvarchar" MaxLength="50" />
+          <Property Name="KargoIleGeldi" Type="bit" />
+          <Property Name="TamirDurumId" Type="tinyint" />
+          <Property Name="TamirTarihi" Type="datetime" />
+          <Property Name="KontrolEdenPersonelId" Type="int" />
+          <Property Name="KontrolTarihi" Type="datetime" />
+          <Property Name="KargoIleGonderilecek" Type="bit" />
+          <Property Name="TeslimAlan" Type="nvarchar" MaxLength="70" />
+        </EntityType>
+        <EntityType Name="UygulamaMenu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MenuName" Type="nvarchar" MaxLength="30" />
+          <Property Name="UstMenuId" Type="int" />
+          <Property Name="MenuClass" Type="nvarchar" MaxLength="100" />
+          <Property Name="IconIndex" Type="int" />
+        </EntityType>
+        <EntityType Name="UygulamaMenuYetki">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="YetkiAdi" Type="nvarchar" MaxLength="20" />
+          <Property Name="UygulamaMenuId" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TeknikProje.dbo.vTamirTeslim' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vTamirTeslim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="MusteriAdi" Type="nvarchar" MaxLength="100" />
+          <Property Name="GsmNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="Eposta" Type="nvarchar" MaxLength="70" />
+          <Property Name="IlAdi" Type="nvarchar" MaxLength="40" />
+          <Property Name="IlceAdi" Type="nvarchar" MaxLength="40" />
+          <Property Name="Marka" Type="nvarchar" MaxLength="20" />
+          <Property Name="Model" Type="nvarchar" MaxLength="20" />
+          <Property Name="SeriNo" Type="nvarchar" MaxLength="30" />
+          <Property Name="TeslimTarihi" Type="datetime" />
+          <Property Name="Barcode" Type="nvarchar" MaxLength="50" />
+          <Property Name="TamirDurum" Type="nvarchar" MaxLength="20" />
+          <Property Name="TamirDurumId" Type="tinyint" />
+          <Property Name="TeknikPersonelAciklama" Type="nvarchar(max)" />
+          <Property Name="TamirPersonel" Type="nvarchar" MaxLength="101" />
+          <Property Name="PersonelUstId" Type="int" />
+          <Property Name="KargoIleGonderilecek" Type="bit" />
+        </EntityType>
+        <Association Name="FK_CihazKargoGonderim_Il">
+          <End Role="Il" Type="Self.Il" Multiplicity="1" />
+          <End Role="CihazKargoGonderim" Type="Self.CihazKargoGonderim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Il">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CihazKargoGonderim">
+              <PropertyRef Name="IlId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CihazKargoGonderim_Ilce">
+          <End Role="Ilce" Type="Self.Ilce" Multiplicity="1" />
+          <End Role="CihazKargoGonderim" Type="Self.CihazKargoGonderim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ilce">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CihazKargoGonderim">
+              <PropertyRef Name="IlceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CihazKargoGonderim_KargoFirma">
+          <End Role="KargoFirma" Type="Self.KargoFirma" Multiplicity="1" />
+          <End Role="CihazKargoGonderim" Type="Self.CihazKargoGonderim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KargoFirma">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CihazKargoGonderim">
+              <PropertyRef Name="KargoFirmaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CihazKargoGonderim_Personel">
+          <End Role="Personel" Type="Self.Personel" Multiplicity="1" />
+          <End Role="CihazKargoGonderim" Type="Self.CihazKargoGonderim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CihazKargoGonderim">
+              <PropertyRef Name="GonderenPersonelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CihazKargoGonderim_TamirTeslim">
+          <End Role="TamirTeslim" Type="Self.TamirTeslim" Multiplicity="1" />
+          <End Role="CihazKargoGonderim" Type="Self.CihazKargoGonderim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TamirTeslim">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CihazKargoGonderim">
+              <PropertyRef Name="TamirTeslimId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CihazTamirParca_CihazParca">
+          <End Role="CihazParca" Type="Self.CihazParca" Multiplicity="1" />
+          <End Role="CihazTamirParca" Type="Self.CihazTamirParca" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CihazParca">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CihazTamirParca">
+              <PropertyRef Name="CihazParcaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CihazTamirParca_Personel">
+          <End Role="Personel" Type="Self.Personel" Multiplicity="0..1" />
+          <End Role="CihazTamirParca" Type="Self.CihazTamirParca" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CihazTamirParca">
+              <PropertyRef Name="EkleyenPersonel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CihazTamirParca_TamirTeslim">
+          <End Role="TamirTeslim" Type="Self.TamirTeslim" Multiplicity="1" />
+          <End Role="CihazTamirParca" Type="Self.CihazTamirParca" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TamirTeslim">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CihazTamirParca">
+              <PropertyRef Name="TamirTeslimId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ilce_Il">
+          <End Role="Il" Type="Self.Il" Multiplicity="1" />
+          <End Role="Ilce" Type="Self.Ilce" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Il">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ilce">
+              <PropertyRef Name="IlId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KargoSube_KargoFirma">
+          <End Role="KargoFirma" Type="Self.KargoFirma" Multiplicity="1" />
+          <End Role="KargoSube" Type="Self.KargoSube" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KargoFirma">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="KargoSube">
+              <PropertyRef Name="KargoFirmaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Musteri_Il">
+          <End Role="Il" Type="Self.Il" Multiplicity="0..1" />
+          <End Role="Musteri" Type="Self.Musteri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Il">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Musteri">
+              <PropertyRef Name="IlId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Musteri_Ilce">
+          <End Role="Ilce" Type="Self.Ilce" Multiplicity="0..1" />
+          <End Role="Musteri" Type="Self.Musteri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ilce">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Musteri">
+              <PropertyRef Name="IlceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonelLoginSession_Personel">
+          <End Role="Personel" Type="Self.Personel" Multiplicity="1" />
+          <End Role="PersonelLoginSession" Type="Self.PersonelLoginSession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PersonelLoginSession">
+              <PropertyRef Name="PersonelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TamirTeslim_Musteri">
+          <End Role="Musteri" Type="Self.Musteri" Multiplicity="1" />
+          <End Role="TamirTeslim" Type="Self.TamirTeslim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Musteri">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TamirTeslim">
+              <PropertyRef Name="MusteriId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TamirTeslim_Personel">
+          <End Role="Personel" Type="Self.Personel" Multiplicity="1" />
+          <End Role="TamirTeslim" Type="Self.TamirTeslim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TamirTeslim">
+              <PropertyRef Name="TeslimAlanPersonelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TamirTeslim_Personel1">
+          <End Role="Personel" Type="Self.Personel" Multiplicity="0..1" />
+          <End Role="TamirTeslim" Type="Self.TamirTeslim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TamirTeslim">
+              <PropertyRef Name="IadeEdenPersonelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TamirTeslim_Personel2">
+          <End Role="Personel" Type="Self.Personel" Multiplicity="0..1" />
+          <End Role="TamirTeslim" Type="Self.TamirTeslim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TamirTeslim">
+              <PropertyRef Name="TamirEdenPersonelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TamirTeslim_Personel3">
+          <End Role="Personel" Type="Self.Personel" Multiplicity="0..1" />
+          <End Role="TamirTeslim" Type="Self.TamirTeslim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TamirTeslim">
+              <PropertyRef Name="KontrolEdenPersonelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TamirTeslim_TamirDurum">
+          <End Role="TamirDurum" Type="Self.TamirDurum" Multiplicity="0..1" />
+          <End Role="TamirTeslim" Type="Self.TamirTeslim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TamirDurum">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TamirTeslim">
+              <PropertyRef Name="TamirDurumId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UygulamaMenuYetki_UygulamaMenu">
+          <End Role="UygulamaMenu" Type="Self.UygulamaMenu" Multiplicity="0..1" />
+          <End Role="UygulamaMenuYetki" Type="Self.UygulamaMenuYetki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UygulamaMenu">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UygulamaMenuYetki">
+              <PropertyRef Name="UygulamaMenuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TeknikProjeModelStoreContainer">
+          <EntitySet Name="CihazKargoGonderim" EntityType="Self.CihazKargoGonderim" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CihazParca" EntityType="Self.CihazParca" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CihazTamirParca" EntityType="Self.CihazTamirParca" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Il" EntityType="Self.Il" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ilce" EntityType="Self.Ilce" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KargoFirma" EntityType="Self.KargoFirma" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KargoSube" EntityType="Self.KargoSube" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Musteri" EntityType="Self.Musteri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PerformansRapor" EntityType="Self.PerformansRapor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Personel" EntityType="Self.Personel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersonelLoginSession" EntityType="Self.PersonelLoginSession" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TamirDurum" EntityType="Self.TamirDurum" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TamirTeslim" EntityType="Self.TamirTeslim" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UygulamaMenu" EntityType="Self.UygulamaMenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UygulamaMenuYetki" EntityType="Self.UygulamaMenuYetki" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vTamirTeslim" EntityType="Self.vTamirTeslim" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vTamirTeslim].[Id] AS [Id], 
+    [vTamirTeslim].[MusteriAdi] AS [MusteriAdi], 
+    [vTamirTeslim].[GsmNo] AS [GsmNo], 
+    [vTamirTeslim].[Eposta] AS [Eposta], 
+    [vTamirTeslim].[IlAdi] AS [IlAdi], 
+    [vTamirTeslim].[IlceAdi] AS [IlceAdi], 
+    [vTamirTeslim].[Marka] AS [Marka], 
+    [vTamirTeslim].[Model] AS [Model], 
+    [vTamirTeslim].[SeriNo] AS [SeriNo], 
+    [vTamirTeslim].[TeslimTarihi] AS [TeslimTarihi], 
+    [vTamirTeslim].[Barcode] AS [Barcode], 
+    [vTamirTeslim].[TamirDurum] AS [TamirDurum], 
+    [vTamirTeslim].[TamirDurumId] AS [TamirDurumId], 
+    [vTamirTeslim].[TeknikPersonelAciklama] AS [TeknikPersonelAciklama], 
+    [vTamirTeslim].[TamirPersonel] AS [TamirPersonel], 
+    [vTamirTeslim].[PersonelUstId] AS [PersonelUstId], 
+    [vTamirTeslim].[KargoIleGonderilecek] AS [KargoIleGonderilecek]
+    FROM [dbo].[vTamirTeslim] AS [vTamirTeslim]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_CihazKargoGonderim_Il" Association="Self.FK_CihazKargoGonderim_Il">
+            <End Role="Il" EntitySet="Il" />
+            <End Role="CihazKargoGonderim" EntitySet="CihazKargoGonderim" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CihazKargoGonderim_Ilce" Association="Self.FK_CihazKargoGonderim_Ilce">
+            <End Role="Ilce" EntitySet="Ilce" />
+            <End Role="CihazKargoGonderim" EntitySet="CihazKargoGonderim" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CihazKargoGonderim_KargoFirma" Association="Self.FK_CihazKargoGonderim_KargoFirma">
+            <End Role="KargoFirma" EntitySet="KargoFirma" />
+            <End Role="CihazKargoGonderim" EntitySet="CihazKargoGonderim" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CihazKargoGonderim_Personel" Association="Self.FK_CihazKargoGonderim_Personel">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="CihazKargoGonderim" EntitySet="CihazKargoGonderim" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CihazKargoGonderim_TamirTeslim" Association="Self.FK_CihazKargoGonderim_TamirTeslim">
+            <End Role="TamirTeslim" EntitySet="TamirTeslim" />
+            <End Role="CihazKargoGonderim" EntitySet="CihazKargoGonderim" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CihazTamirParca_CihazParca" Association="Self.FK_CihazTamirParca_CihazParca">
+            <End Role="CihazParca" EntitySet="CihazParca" />
+            <End Role="CihazTamirParca" EntitySet="CihazTamirParca" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CihazTamirParca_Personel" Association="Self.FK_CihazTamirParca_Personel">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="CihazTamirParca" EntitySet="CihazTamirParca" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CihazTamirParca_TamirTeslim" Association="Self.FK_CihazTamirParca_TamirTeslim">
+            <End Role="TamirTeslim" EntitySet="TamirTeslim" />
+            <End Role="CihazTamirParca" EntitySet="CihazTamirParca" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ilce_Il" Association="Self.FK_Ilce_Il">
+            <End Role="Il" EntitySet="Il" />
+            <End Role="Ilce" EntitySet="Ilce" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KargoSube_KargoFirma" Association="Self.FK_KargoSube_KargoFirma">
+            <End Role="KargoFirma" EntitySet="KargoFirma" />
+            <End Role="KargoSube" EntitySet="KargoSube" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Musteri_Il" Association="Self.FK_Musteri_Il">
+            <End Role="Il" EntitySet="Il" />
+            <End Role="Musteri" EntitySet="Musteri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Musteri_Ilce" Association="Self.FK_Musteri_Ilce">
+            <End Role="Ilce" EntitySet="Ilce" />
+            <End Role="Musteri" EntitySet="Musteri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonelLoginSession_Personel" Association="Self.FK_PersonelLoginSession_Personel">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="PersonelLoginSession" EntitySet="PersonelLoginSession" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TamirTeslim_Musteri" Association="Self.FK_TamirTeslim_Musteri">
+            <End Role="Musteri" EntitySet="Musteri" />
+            <End Role="TamirTeslim" EntitySet="TamirTeslim" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TamirTeslim_Personel" Association="Self.FK_TamirTeslim_Personel">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="TamirTeslim" EntitySet="TamirTeslim" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TamirTeslim_Personel1" Association="Self.FK_TamirTeslim_Personel1">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="TamirTeslim" EntitySet="TamirTeslim" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TamirTeslim_Personel2" Association="Self.FK_TamirTeslim_Personel2">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="TamirTeslim" EntitySet="TamirTeslim" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TamirTeslim_Personel3" Association="Self.FK_TamirTeslim_Personel3">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="TamirTeslim" EntitySet="TamirTeslim" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TamirTeslim_TamirDurum" Association="Self.FK_TamirTeslim_TamirDurum">
+            <End Role="TamirDurum" EntitySet="TamirDurum" />
+            <End Role="TamirTeslim" EntitySet="TamirTeslim" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UygulamaMenuYetki_UygulamaMenu" Association="Self.FK_UygulamaMenuYetki_UygulamaMenu">
+            <End Role="UygulamaMenu" EntitySet="UygulamaMenu" />
+            <End Role="UygulamaMenuYetki" EntitySet="UygulamaMenuYetki" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TeknikProjeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CihazParca">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParcaAdi" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Barkod" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Fiyat" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="StokAdet" Type="Int32" />
+          <Property Name="MontajUcreti" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Marka" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CihazTamirParca" Relationship="Self.FK_CihazTamirParca_CihazParca" FromRole="CihazParca" ToRole="CihazTamirParca" />
+        </EntityType>
+        <EntityType Name="CihazTamirParca">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TamirTeslimId" Type="Int32" Nullable="false" />
+          <Property Name="CihazParcaId" Type="Int32" Nullable="false" />
+          <Property Name="EkleyenPersonel" Type="Int32" />
+          <Property Name="EklemeTarihi" Type="DateTime" Precision="3" />
+          <Property Name="ParcaBekliyor" Type="Boolean" />
+          <NavigationProperty Name="CihazParca" Relationship="Self.FK_CihazTamirParca_CihazParca" FromRole="CihazTamirParca" ToRole="CihazParca" />
+          <NavigationProperty Name="TamirTeslim" Relationship="Self.FK_CihazTamirParca_TamirTeslim" FromRole="CihazTamirParca" ToRole="TamirTeslim" />
+          <NavigationProperty Name="Personel" Relationship="TeknikProjeModel.FK_CihazTamirParca_Personel" FromRole="CihazTamirParca" ToRole="Personel" />
+        </EntityType>
+        <EntityType Name="Il">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="IlAdi" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Ilce" Relationship="Self.FK_Ilce_Il" FromRole="Il" ToRole="Ilce" />
+          <NavigationProperty Name="Musteri" Relationship="Self.FK_Musteri_Il" FromRole="Il" ToRole="Musteri" />
+          <NavigationProperty Name="CihazKargoGonderim" Relationship="TeknikProjeModel.FK_CihazKargoGonderim_Il" FromRole="Il" ToRole="CihazKargoGonderim" />
+        </EntityType>
+        <EntityType Name="Ilce">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IlId" Type="Int32" Nullable="false" />
+          <Property Name="IlceAdi" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Il" Relationship="Self.FK_Ilce_Il" FromRole="Ilce" ToRole="Il" />
+          <NavigationProperty Name="Musteri" Relationship="Self.FK_Musteri_Ilce" FromRole="Ilce" ToRole="Musteri" />
+          <NavigationProperty Name="CihazKargoGonderim" Relationship="TeknikProjeModel.FK_CihazKargoGonderim_Ilce" FromRole="Ilce" ToRole="CihazKargoGonderim" />
+        </EntityType>
+        <EntityType Name="KargoFirma">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirmaAdi" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="KargoSube" Relationship="Self.FK_KargoSube_KargoFirma" FromRole="KargoFirma" ToRole="KargoSube" />
+          <NavigationProperty Name="CihazKargoGonderim" Relationship="TeknikProjeModel.FK_CihazKargoGonderim_KargoFirma" FromRole="KargoFirma" ToRole="CihazKargoGonderim" />
+        </EntityType>
+        <EntityType Name="KargoSube">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KargoFirmaId" Type="Int32" Nullable="false" />
+          <Property Name="SubeAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TelefonNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="KargoFirma" Relationship="Self.FK_KargoSube_KargoFirma" FromRole="KargoSube" ToRole="KargoFirma" />
+        </EntityType>
+        <EntityType Name="Musteri">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TamAdi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GsmNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Eposta" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="IlId" Type="Int32" />
+          <Property Name="IlceId" Type="Int32" />
+          <Property Name="Adres" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Il" Relationship="Self.FK_Musteri_Il" FromRole="Musteri" ToRole="Il" />
+          <NavigationProperty Name="Ilce" Relationship="Self.FK_Musteri_Ilce" FromRole="Musteri" ToRole="Ilce" />
+          <NavigationProperty Name="TamirTeslim" Relationship="Self.FK_TamirTeslim_Musteri" FromRole="Musteri" ToRole="TamirTeslim" />
+        </EntityType>
+        <EntityType Name="Personel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KullaniciAdi" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Sifre" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Soyadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Pasif" Type="Boolean" />
+          <Property Name="Gorev" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="UstPersonelId" Type="Int32" />
+          <NavigationProperty Name="TamirTeslim" Relationship="Self.FK_TamirTeslim_Personel" FromRole="Personel" ToRole="TamirTeslim" />
+          <NavigationProperty Name="TamirTeslim1" Relationship="Self.FK_TamirTeslim_Personel1" FromRole="Personel" ToRole="TamirTeslim" />
+          <NavigationProperty Name="TamirTeslim2" Relationship="Self.FK_TamirTeslim_Personel2" FromRole="Personel" ToRole="TamirTeslim" />
+          <NavigationProperty Name="CihazTamirParca" Relationship="TeknikProjeModel.FK_CihazTamirParca_Personel" FromRole="Personel" ToRole="CihazTamirParca" />
+          <NavigationProperty Name="TamirTeslim3" Relationship="TeknikProjeModel.FK_TamirTeslim_Personel3" FromRole="Personel" ToRole="TamirTeslim" />
+          <NavigationProperty Name="PersonelLoginSession" Relationship="TeknikProjeModel.FK_PersonelLoginSession_Personel" FromRole="Personel" ToRole="PersonelLoginSession" />
+          <NavigationProperty Name="CihazKargoGonderim" Relationship="TeknikProjeModel.FK_CihazKargoGonderim_Personel" FromRole="Personel" ToRole="CihazKargoGonderim" />
+        </EntityType>
+        <EntityType Name="TamirDurum">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Byte" Nullable="false" />
+          <Property Name="Aciklama" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TamirTeslim" Relationship="Self.FK_TamirTeslim_TamirDurum" FromRole="TamirDurum" ToRole="TamirTeslim" />
+        </EntityType>
+        <EntityType Name="TamirTeslim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MusteriId" Type="Int32" Nullable="false" />
+          <Property Name="TeslimAlanPersonelId" Type="Int32" Nullable="false" />
+          <Property Name="IadeEdenPersonelId" Type="Int32" />
+          <Property Name="TamirEdenPersonelId" Type="Int32" />
+          <Property Name="Marka" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SeriNo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MusteriSorunAciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TeknikPersonelAciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TeslimTarihi" Type="DateTime" Precision="3" />
+          <Property Name="IadeTarihi" Type="DateTime" Precision="3" />
+          <Property Name="TeslimAlinanAksesuar" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="TamirFiyat" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Barcode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KargoIleGeldi" Type="Boolean" />
+          <Property Name="TamirDurumId" Type="Byte" />
+          <Property Name="TamirTarihi" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CihazTamirParca" Relationship="Self.FK_CihazTamirParca_TamirTeslim" FromRole="TamirTeslim" ToRole="CihazTamirParca" />
+          <NavigationProperty Name="Musteri" Relationship="Self.FK_TamirTeslim_Musteri" FromRole="TamirTeslim" ToRole="Musteri" />
+          <NavigationProperty Name="Personel" Relationship="Self.FK_TamirTeslim_Personel" FromRole="TamirTeslim" ToRole="Personel" />
+          <NavigationProperty Name="Personel1" Relationship="Self.FK_TamirTeslim_Personel1" FromRole="TamirTeslim" ToRole="Personel" />
+          <NavigationProperty Name="Personel2" Relationship="Self.FK_TamirTeslim_Personel2" FromRole="TamirTeslim" ToRole="Personel" />
+          <NavigationProperty Name="TamirDurum" Relationship="Self.FK_TamirTeslim_TamirDurum" FromRole="TamirTeslim" ToRole="TamirDurum" />
+          <Property Name="KontrolEdenPersonelId" Type="Int32" />
+          <Property Name="KontrolTarihi" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Personel3" Relationship="TeknikProjeModel.FK_TamirTeslim_Personel3" FromRole="TamirTeslim" ToRole="Personel" />
+          <Property Name="KargoIleGonderilecek" Type="Boolean" />
+          <NavigationProperty Name="CihazKargoGonderim" Relationship="TeknikProjeModel.FK_CihazKargoGonderim_TamirTeslim" FromRole="TamirTeslim" ToRole="CihazKargoGonderim" />
+          <Property Name="TeslimAlan" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="UygulamaMenu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MenuName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="UstMenuId" Type="Int32" />
+          <Property Name="MenuClass" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IconIndex" Type="Int32" />
+          <NavigationProperty Name="UygulamaMenuYetki" Relationship="Self.FK_UygulamaMenuYetki_UygulamaMenu" FromRole="UygulamaMenu" ToRole="UygulamaMenuYetki" />
+        </EntityType>
+        <EntityType Name="UygulamaMenuYetki">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="YetkiAdi" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="UygulamaMenuId" Type="Int32" />
+          <NavigationProperty Name="UygulamaMenu" Relationship="Self.FK_UygulamaMenuYetki_UygulamaMenu" FromRole="UygulamaMenuYetki" ToRole="UygulamaMenu" />
+        </EntityType>
+        <EntityType Name="vTamirTeslim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="MusteriAdi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GsmNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Eposta" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="IlAdi" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="IlceAdi" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Marka" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SeriNo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="TeslimTarihi" Type="DateTime" Precision="3" />
+          <Property Name="Barcode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TamirDurum" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TamirDurumId" Type="Byte" />
+          <Property Name="TeknikPersonelAciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TamirPersonel" Type="String" MaxLength="101" FixedLength="false" Unicode="true" />
+          <Property Name="PersonelUstId" Type="Int32" />
+          <Property Name="KargoIleGonderilecek" Type="Boolean" />
+        </EntityType>
+        <Association Name="FK_CihazTamirParca_CihazParca">
+          <End Role="CihazParca" Type="Self.CihazParca" Multiplicity="1" />
+          <End Role="CihazTamirParca" Type="Self.CihazTamirParca" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CihazParca">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CihazTamirParca">
+              <PropertyRef Name="CihazParcaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CihazTamirParca_TamirTeslim">
+          <End Role="TamirTeslim" Type="Self.TamirTeslim" Multiplicity="1" />
+          <End Role="CihazTamirParca" Type="Self.CihazTamirParca" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TamirTeslim">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CihazTamirParca">
+              <PropertyRef Name="TamirTeslimId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ilce_Il">
+          <End Role="Il" Type="Self.Il" Multiplicity="1" />
+          <End Role="Ilce" Type="Self.Ilce" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Il">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ilce">
+              <PropertyRef Name="IlId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Musteri_Il">
+          <End Role="Il" Type="Self.Il" Multiplicity="0..1" />
+          <End Role="Musteri" Type="Self.Musteri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Il">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Musteri">
+              <PropertyRef Name="IlId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Musteri_Ilce">
+          <End Role="Ilce" Type="Self.Ilce" Multiplicity="0..1" />
+          <End Role="Musteri" Type="Self.Musteri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ilce">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Musteri">
+              <PropertyRef Name="IlceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KargoSube_KargoFirma">
+          <End Role="KargoFirma" Type="Self.KargoFirma" Multiplicity="1" />
+          <End Role="KargoSube" Type="Self.KargoSube" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KargoFirma">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="KargoSube">
+              <PropertyRef Name="KargoFirmaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TamirTeslim_Musteri">
+          <End Role="Musteri" Type="Self.Musteri" Multiplicity="1" />
+          <End Role="TamirTeslim" Type="Self.TamirTeslim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Musteri">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TamirTeslim">
+              <PropertyRef Name="MusteriId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TamirTeslim_Personel">
+          <End Role="Personel" Type="Self.Personel" Multiplicity="1" />
+          <End Role="TamirTeslim" Type="Self.TamirTeslim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TamirTeslim">
+              <PropertyRef Name="TeslimAlanPersonelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TamirTeslim_Personel1">
+          <End Role="Personel" Type="Self.Personel" Multiplicity="0..1" />
+          <End Role="TamirTeslim" Type="Self.TamirTeslim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TamirTeslim">
+              <PropertyRef Name="IadeEdenPersonelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TamirTeslim_Personel2">
+          <End Role="Personel" Type="Self.Personel" Multiplicity="0..1" />
+          <End Role="TamirTeslim" Type="Self.TamirTeslim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TamirTeslim">
+              <PropertyRef Name="TamirEdenPersonelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TamirTeslim_TamirDurum">
+          <End Role="TamirDurum" Type="Self.TamirDurum" Multiplicity="0..1" />
+          <End Role="TamirTeslim" Type="Self.TamirTeslim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TamirDurum">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TamirTeslim">
+              <PropertyRef Name="TamirDurumId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UygulamaMenuYetki_UygulamaMenu">
+          <End Role="UygulamaMenu" Type="Self.UygulamaMenu" Multiplicity="0..1" />
+          <End Role="UygulamaMenuYetki" Type="Self.UygulamaMenuYetki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UygulamaMenu">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UygulamaMenuYetki">
+              <PropertyRef Name="UygulamaMenuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TeknikProjeEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CihazParca" EntityType="Self.CihazParca" />
+          <EntitySet Name="CihazTamirParca" EntityType="Self.CihazTamirParca" />
+          <EntitySet Name="Il" EntityType="Self.Il" />
+          <EntitySet Name="Ilce" EntityType="Self.Ilce" />
+          <EntitySet Name="KargoFirma" EntityType="Self.KargoFirma" />
+          <EntitySet Name="KargoSube" EntityType="Self.KargoSube" />
+          <EntitySet Name="Musteri" EntityType="Self.Musteri" />
+          <EntitySet Name="Personel" EntityType="Self.Personel" />
+          <EntitySet Name="TamirDurum" EntityType="Self.TamirDurum" />
+          <EntitySet Name="TamirTeslim" EntityType="Self.TamirTeslim" />
+          <EntitySet Name="UygulamaMenu" EntityType="Self.UygulamaMenu" />
+          <EntitySet Name="UygulamaMenuYetki" EntityType="Self.UygulamaMenuYetki" />
+          <EntitySet Name="vTamirTeslim" EntityType="Self.vTamirTeslim" />
+          <AssociationSet Name="FK_CihazTamirParca_CihazParca" Association="Self.FK_CihazTamirParca_CihazParca">
+            <End Role="CihazParca" EntitySet="CihazParca" />
+            <End Role="CihazTamirParca" EntitySet="CihazTamirParca" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CihazTamirParca_TamirTeslim" Association="Self.FK_CihazTamirParca_TamirTeslim">
+            <End Role="TamirTeslim" EntitySet="TamirTeslim" />
+            <End Role="CihazTamirParca" EntitySet="CihazTamirParca" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ilce_Il" Association="Self.FK_Ilce_Il">
+            <End Role="Il" EntitySet="Il" />
+            <End Role="Ilce" EntitySet="Ilce" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Musteri_Il" Association="Self.FK_Musteri_Il">
+            <End Role="Il" EntitySet="Il" />
+            <End Role="Musteri" EntitySet="Musteri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Musteri_Ilce" Association="Self.FK_Musteri_Ilce">
+            <End Role="Ilce" EntitySet="Ilce" />
+            <End Role="Musteri" EntitySet="Musteri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KargoSube_KargoFirma" Association="Self.FK_KargoSube_KargoFirma">
+            <End Role="KargoFirma" EntitySet="KargoFirma" />
+            <End Role="KargoSube" EntitySet="KargoSube" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TamirTeslim_Musteri" Association="Self.FK_TamirTeslim_Musteri">
+            <End Role="Musteri" EntitySet="Musteri" />
+            <End Role="TamirTeslim" EntitySet="TamirTeslim" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TamirTeslim_Personel" Association="Self.FK_TamirTeslim_Personel">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="TamirTeslim" EntitySet="TamirTeslim" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TamirTeslim_Personel1" Association="Self.FK_TamirTeslim_Personel1">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="TamirTeslim" EntitySet="TamirTeslim" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TamirTeslim_Personel2" Association="Self.FK_TamirTeslim_Personel2">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="TamirTeslim" EntitySet="TamirTeslim" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TamirTeslim_TamirDurum" Association="Self.FK_TamirTeslim_TamirDurum">
+            <End Role="TamirDurum" EntitySet="TamirDurum" />
+            <End Role="TamirTeslim" EntitySet="TamirTeslim" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UygulamaMenuYetki_UygulamaMenu" Association="Self.FK_UygulamaMenuYetki_UygulamaMenu">
+            <End Role="UygulamaMenu" EntitySet="UygulamaMenu" />
+            <End Role="UygulamaMenuYetki" EntitySet="UygulamaMenuYetki" />
+          </AssociationSet>
+          <EntitySet Name="PersonelLoginSession" EntityType="TeknikProjeModel.PersonelLoginSession" />
+          <AssociationSet Name="FK_CihazTamirParca_Personel" Association="TeknikProjeModel.FK_CihazTamirParca_Personel">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="CihazTamirParca" EntitySet="CihazTamirParca" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TamirTeslim_Personel3" Association="TeknikProjeModel.FK_TamirTeslim_Personel3">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="TamirTeslim" EntitySet="TamirTeslim" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonelLoginSession_Personel" Association="TeknikProjeModel.FK_PersonelLoginSession_Personel">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="PersonelLoginSession" EntitySet="PersonelLoginSession" />
+          </AssociationSet>
+          <EntitySet Name="CihazKargoGonderim" EntityType="TeknikProjeModel.CihazKargoGonderim" />
+          <AssociationSet Name="FK_CihazKargoGonderim_Il" Association="TeknikProjeModel.FK_CihazKargoGonderim_Il">
+            <End Role="Il" EntitySet="Il" />
+            <End Role="CihazKargoGonderim" EntitySet="CihazKargoGonderim" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CihazKargoGonderim_Ilce" Association="TeknikProjeModel.FK_CihazKargoGonderim_Ilce">
+            <End Role="Ilce" EntitySet="Ilce" />
+            <End Role="CihazKargoGonderim" EntitySet="CihazKargoGonderim" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CihazKargoGonderim_KargoFirma" Association="TeknikProjeModel.FK_CihazKargoGonderim_KargoFirma">
+            <End Role="KargoFirma" EntitySet="KargoFirma" />
+            <End Role="CihazKargoGonderim" EntitySet="CihazKargoGonderim" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CihazKargoGonderim_Personel" Association="TeknikProjeModel.FK_CihazKargoGonderim_Personel">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="CihazKargoGonderim" EntitySet="CihazKargoGonderim" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CihazKargoGonderim_TamirTeslim" Association="TeknikProjeModel.FK_CihazKargoGonderim_TamirTeslim">
+            <End Role="TamirTeslim" EntitySet="TamirTeslim" />
+            <End Role="CihazKargoGonderim" EntitySet="CihazKargoGonderim" />
+          </AssociationSet>
+          <EntitySet Name="PerformansRapor" EntityType="TeknikProjeModel.PerformansRapor" />
+        </EntityContainer>
+        <EntityType Name="PersonelLoginSession">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonelId" Type="Int32" Nullable="false" />
+          <Property Name="GirisTarihi" Type="DateTime" Precision="3" />
+          <Property Name="CikisTarihi" Type="DateTime" Precision="3" />
+          <Property Name="BilgisayarAdi" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Personel" Relationship="TeknikProjeModel.FK_PersonelLoginSession_Personel" FromRole="PersonelLoginSession" ToRole="Personel" />
+        </EntityType>
+        <Association Name="FK_CihazTamirParca_Personel">
+          <End Type="TeknikProjeModel.Personel" Role="Personel" Multiplicity="0..1" />
+          <End Type="TeknikProjeModel.CihazTamirParca" Role="CihazTamirParca" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CihazTamirParca">
+              <PropertyRef Name="EkleyenPersonel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TamirTeslim_Personel3">
+          <End Type="TeknikProjeModel.Personel" Role="Personel" Multiplicity="0..1" />
+          <End Type="TeknikProjeModel.TamirTeslim" Role="TamirTeslim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TamirTeslim">
+              <PropertyRef Name="KontrolEdenPersonelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonelLoginSession_Personel">
+          <End Type="TeknikProjeModel.Personel" Role="Personel" Multiplicity="1" />
+          <End Type="TeknikProjeModel.PersonelLoginSession" Role="PersonelLoginSession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PersonelLoginSession">
+              <PropertyRef Name="PersonelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CihazKargoGonderim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TamirTeslimId" Type="Int32" Nullable="false" />
+          <Property Name="GonderenPersonelId" Type="Int32" Nullable="false" />
+          <Property Name="GondermeTarihi" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="KargoFirmaId" Type="Int32" Nullable="false" />
+          <Property Name="GonderiNumarasi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IlId" Type="Int32" Nullable="false" />
+          <Property Name="IlceId" Type="Int32" Nullable="false" />
+          <Property Name="Adres" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Il" Relationship="TeknikProjeModel.FK_CihazKargoGonderim_Il" FromRole="CihazKargoGonderim" ToRole="Il" />
+          <NavigationProperty Name="Ilce" Relationship="TeknikProjeModel.FK_CihazKargoGonderim_Ilce" FromRole="CihazKargoGonderim" ToRole="Ilce" />
+          <NavigationProperty Name="KargoFirma" Relationship="TeknikProjeModel.FK_CihazKargoGonderim_KargoFirma" FromRole="CihazKargoGonderim" ToRole="KargoFirma" />
+          <NavigationProperty Name="Personel" Relationship="TeknikProjeModel.FK_CihazKargoGonderim_Personel" FromRole="CihazKargoGonderim" ToRole="Personel" />
+          <NavigationProperty Name="TamirTeslim" Relationship="TeknikProjeModel.FK_CihazKargoGonderim_TamirTeslim" FromRole="CihazKargoGonderim" ToRole="TamirTeslim" />
+          <Property Name="MusteriAdi" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="GsmNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_CihazKargoGonderim_Il">
+          <End Type="TeknikProjeModel.Il" Role="Il" Multiplicity="1" />
+          <End Type="TeknikProjeModel.CihazKargoGonderim" Role="CihazKargoGonderim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Il">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CihazKargoGonderim">
+              <PropertyRef Name="IlId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CihazKargoGonderim_Ilce">
+          <End Type="TeknikProjeModel.Ilce" Role="Ilce" Multiplicity="1" />
+          <End Type="TeknikProjeModel.CihazKargoGonderim" Role="CihazKargoGonderim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ilce">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CihazKargoGonderim">
+              <PropertyRef Name="IlceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CihazKargoGonderim_KargoFirma">
+          <End Type="TeknikProjeModel.KargoFirma" Role="KargoFirma" Multiplicity="1" />
+          <End Type="TeknikProjeModel.CihazKargoGonderim" Role="CihazKargoGonderim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KargoFirma">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CihazKargoGonderim">
+              <PropertyRef Name="KargoFirmaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CihazKargoGonderim_Personel">
+          <End Type="TeknikProjeModel.Personel" Role="Personel" Multiplicity="1" />
+          <End Type="TeknikProjeModel.CihazKargoGonderim" Role="CihazKargoGonderim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CihazKargoGonderim">
+              <PropertyRef Name="GonderenPersonelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CihazKargoGonderim_TamirTeslim">
+          <End Type="TeknikProjeModel.TamirTeslim" Role="TamirTeslim" Multiplicity="1" />
+          <End Type="TeknikProjeModel.CihazKargoGonderim" Role="CihazKargoGonderim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TamirTeslim">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CihazKargoGonderim">
+              <PropertyRef Name="TamirTeslimId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PerformansRapor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RaportAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProcedureName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TeknikProjeModelStoreContainer" CdmEntityContainer="TeknikProjeEntities">
+          <EntitySetMapping Name="CihazParca">
+            <EntityTypeMapping TypeName="TeknikProjeModel.CihazParca">
+              <MappingFragment StoreEntitySet="CihazParca">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ParcaAdi" ColumnName="ParcaAdi" />
+                <ScalarProperty Name="Barkod" ColumnName="Barkod" />
+                <ScalarProperty Name="Fiyat" ColumnName="Fiyat" />
+                <ScalarProperty Name="StokAdet" ColumnName="StokAdet" />
+                <ScalarProperty Name="MontajUcreti" ColumnName="MontajUcreti" />
+                <ScalarProperty Name="Marka" ColumnName="Marka" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CihazTamirParca">
+            <EntityTypeMapping TypeName="TeknikProjeModel.CihazTamirParca">
+              <MappingFragment StoreEntitySet="CihazTamirParca">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TamirTeslimId" ColumnName="TamirTeslimId" />
+                <ScalarProperty Name="CihazParcaId" ColumnName="CihazParcaId" />
+                <ScalarProperty Name="EkleyenPersonel" ColumnName="EkleyenPersonel" />
+                <ScalarProperty Name="EklemeTarihi" ColumnName="EklemeTarihi" />
+                <ScalarProperty Name="ParcaBekliyor" ColumnName="ParcaBekliyor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Il">
+            <EntityTypeMapping TypeName="TeknikProjeModel.Il">
+              <MappingFragment StoreEntitySet="Il">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IlAdi" ColumnName="IlAdi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ilce">
+            <EntityTypeMapping TypeName="TeknikProjeModel.Ilce">
+              <MappingFragment StoreEntitySet="Ilce">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IlId" ColumnName="IlId" />
+                <ScalarProperty Name="IlceAdi" ColumnName="IlceAdi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KargoFirma">
+            <EntityTypeMapping TypeName="TeknikProjeModel.KargoFirma">
+              <MappingFragment StoreEntitySet="KargoFirma">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirmaAdi" ColumnName="FirmaAdi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KargoSube">
+            <EntityTypeMapping TypeName="TeknikProjeModel.KargoSube">
+              <MappingFragment StoreEntitySet="KargoSube">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="KargoFirmaId" ColumnName="KargoFirmaId" />
+                <ScalarProperty Name="SubeAdi" ColumnName="SubeAdi" />
+                <ScalarProperty Name="TelefonNo" ColumnName="TelefonNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Musteri">
+            <EntityTypeMapping TypeName="TeknikProjeModel.Musteri">
+              <MappingFragment StoreEntitySet="Musteri">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TamAdi" ColumnName="TamAdi" />
+                <ScalarProperty Name="GsmNo" ColumnName="GsmNo" />
+                <ScalarProperty Name="Eposta" ColumnName="Eposta" />
+                <ScalarProperty Name="IlId" ColumnName="IlId" />
+                <ScalarProperty Name="IlceId" ColumnName="IlceId" />
+                <ScalarProperty Name="Adres" ColumnName="Adres" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Personel">
+            <EntityTypeMapping TypeName="TeknikProjeModel.Personel">
+              <MappingFragment StoreEntitySet="Personel">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="KullaniciAdi" ColumnName="KullaniciAdi" />
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+                <ScalarProperty Name="Adi" ColumnName="Adi" />
+                <ScalarProperty Name="Soyadi" ColumnName="Soyadi" />
+                <ScalarProperty Name="Pasif" ColumnName="Pasif" />
+                <ScalarProperty Name="Gorev" ColumnName="Gorev" />
+                <ScalarProperty Name="UstPersonelId" ColumnName="UstPersonelId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TamirDurum">
+            <EntityTypeMapping TypeName="TeknikProjeModel.TamirDurum">
+              <MappingFragment StoreEntitySet="TamirDurum">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TamirTeslim">
+            <EntityTypeMapping TypeName="TeknikProjeModel.TamirTeslim">
+              <MappingFragment StoreEntitySet="TamirTeslim">
+                <ScalarProperty Name="TeslimAlan" ColumnName="TeslimAlan" />
+                <ScalarProperty Name="KargoIleGonderilecek" ColumnName="KargoIleGonderilecek" />
+                <ScalarProperty Name="KontrolTarihi" ColumnName="KontrolTarihi" />
+                <ScalarProperty Name="KontrolEdenPersonelId" ColumnName="KontrolEdenPersonelId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MusteriId" ColumnName="MusteriId" />
+                <ScalarProperty Name="TeslimAlanPersonelId" ColumnName="TeslimAlanPersonelId" />
+                <ScalarProperty Name="IadeEdenPersonelId" ColumnName="IadeEdenPersonelId" />
+                <ScalarProperty Name="TamirEdenPersonelId" ColumnName="TamirEdenPersonelId" />
+                <ScalarProperty Name="Marka" ColumnName="Marka" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="SeriNo" ColumnName="SeriNo" />
+                <ScalarProperty Name="MusteriSorunAciklama" ColumnName="MusteriSorunAciklama" />
+                <ScalarProperty Name="TeknikPersonelAciklama" ColumnName="TeknikPersonelAciklama" />
+                <ScalarProperty Name="TeslimTarihi" ColumnName="TeslimTarihi" />
+                <ScalarProperty Name="IadeTarihi" ColumnName="IadeTarihi" />
+                <ScalarProperty Name="TeslimAlinanAksesuar" ColumnName="TeslimAlinanAksesuar" />
+                <ScalarProperty Name="TamirFiyat" ColumnName="TamirFiyat" />
+                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+                <ScalarProperty Name="KargoIleGeldi" ColumnName="KargoIleGeldi" />
+                <ScalarProperty Name="TamirDurumId" ColumnName="TamirDurumId" />
+                <ScalarProperty Name="TamirTarihi" ColumnName="TamirTarihi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UygulamaMenu">
+            <EntityTypeMapping TypeName="TeknikProjeModel.UygulamaMenu">
+              <MappingFragment StoreEntitySet="UygulamaMenu">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+                <ScalarProperty Name="UstMenuId" ColumnName="UstMenuId" />
+                <ScalarProperty Name="MenuClass" ColumnName="MenuClass" />
+                <ScalarProperty Name="IconIndex" ColumnName="IconIndex" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UygulamaMenuYetki">
+            <EntityTypeMapping TypeName="TeknikProjeModel.UygulamaMenuYetki">
+              <MappingFragment StoreEntitySet="UygulamaMenuYetki">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="YetkiAdi" ColumnName="YetkiAdi" />
+                <ScalarProperty Name="UygulamaMenuId" ColumnName="UygulamaMenuId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vTamirTeslim">
+            <EntityTypeMapping TypeName="TeknikProjeModel.vTamirTeslim">
+              <MappingFragment StoreEntitySet="vTamirTeslim">
+                <ScalarProperty Name="KargoIleGonderilecek" ColumnName="KargoIleGonderilecek" />
+                <ScalarProperty Name="PersonelUstId" ColumnName="PersonelUstId" />
+                <ScalarProperty Name="TamirPersonel" ColumnName="TamirPersonel" />
+                <ScalarProperty Name="TeknikPersonelAciklama" ColumnName="TeknikPersonelAciklama" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MusteriAdi" ColumnName="MusteriAdi" />
+                <ScalarProperty Name="GsmNo" ColumnName="GsmNo" />
+                <ScalarProperty Name="Eposta" ColumnName="Eposta" />
+                <ScalarProperty Name="IlAdi" ColumnName="IlAdi" />
+                <ScalarProperty Name="IlceAdi" ColumnName="IlceAdi" />
+                <ScalarProperty Name="Marka" ColumnName="Marka" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="SeriNo" ColumnName="SeriNo" />
+                <ScalarProperty Name="TeslimTarihi" ColumnName="TeslimTarihi" />
+                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+                <ScalarProperty Name="TamirDurum" ColumnName="TamirDurum" />
+                <ScalarProperty Name="TamirDurumId" ColumnName="TamirDurumId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonelLoginSession">
+            <EntityTypeMapping TypeName="TeknikProjeModel.PersonelLoginSession">
+              <MappingFragment StoreEntitySet="PersonelLoginSession">
+                <ScalarProperty Name="BilgisayarAdi" ColumnName="BilgisayarAdi" />
+                <ScalarProperty Name="CikisTarihi" ColumnName="CikisTarihi" />
+                <ScalarProperty Name="GirisTarihi" ColumnName="GirisTarihi" />
+                <ScalarProperty Name="PersonelId" ColumnName="PersonelId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CihazKargoGonderim">
+            <EntityTypeMapping TypeName="TeknikProjeModel.CihazKargoGonderim">
+              <MappingFragment StoreEntitySet="CihazKargoGonderim">
+                <ScalarProperty Name="GsmNo" ColumnName="GsmNo" />
+                <ScalarProperty Name="MusteriAdi" ColumnName="MusteriAdi" />
+                <ScalarProperty Name="Adres" ColumnName="Adres" />
+                <ScalarProperty Name="IlceId" ColumnName="IlceId" />
+                <ScalarProperty Name="IlId" ColumnName="IlId" />
+                <ScalarProperty Name="GonderiNumarasi" ColumnName="GonderiNumarasi" />
+                <ScalarProperty Name="KargoFirmaId" ColumnName="KargoFirmaId" />
+                <ScalarProperty Name="GondermeTarihi" ColumnName="GondermeTarihi" />
+                <ScalarProperty Name="GonderenPersonelId" ColumnName="GonderenPersonelId" />
+                <ScalarProperty Name="TamirTeslimId" ColumnName="TamirTeslimId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PerformansRapor">
+            <EntityTypeMapping TypeName="TeknikProjeModel.PerformansRapor">
+              <MappingFragment StoreEntitySet="PerformansRapor">
+                <ScalarProperty Name="ProcedureName" ColumnName="ProcedureName" />
+                <ScalarProperty Name="RaportAdi" ColumnName="RaportAdi" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

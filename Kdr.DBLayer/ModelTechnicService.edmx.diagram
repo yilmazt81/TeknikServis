@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="dd488914b83a4889944c628b2b951a10" Name="Diagram1" ZoomLevel="97">
+        <EntityTypeShape EntityType="TeknikProjeModel.CihazParca" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeknikProjeModel.CihazTamirParca" Width="1.5" PointX="5.25" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeknikProjeModel.Il" Width="1.5" PointX="1.5" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeknikProjeModel.Ilce" Width="1.5" PointX="1.5" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeknikProjeModel.KargoFirma" Width="1.5" PointX="7.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeknikProjeModel.KargoSube" Width="1.5" PointX="10" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeknikProjeModel.Musteri" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeknikProjeModel.Personel" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeknikProjeModel.TamirDurum" Width="1.5" PointX="0.75" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeknikProjeModel.TamirTeslim" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeknikProjeModel.UygulamaMenu" Width="1.5" PointX="5.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeknikProjeModel.UygulamaMenuYetki" Width="1.5" PointX="8" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeknikProjeModel.vTamirTeslim" Width="1.5" PointX="7.75" PointY="9.75" IsExpanded="true" />
+        <AssociationConnector Association="TeknikProjeModel.FK_CihazTamirParca_CihazParca" ManuallyRouted="false" />
+        <AssociationConnector Association="TeknikProjeModel.FK_CihazTamirParca_TamirTeslim" ManuallyRouted="false" />
+        <AssociationConnector Association="TeknikProjeModel.FK_Ilce_Il" ManuallyRouted="false" />
+        <AssociationConnector Association="TeknikProjeModel.FK_Musteri_Il" ManuallyRouted="false" />
+        <AssociationConnector Association="TeknikProjeModel.FK_Musteri_Ilce" ManuallyRouted="false" />
+        <AssociationConnector Association="TeknikProjeModel.FK_KargoSube_KargoFirma" ManuallyRouted="false" />
+        <AssociationConnector Association="TeknikProjeModel.FK_TamirTeslim_Musteri" ManuallyRouted="false" />
+        <AssociationConnector Association="TeknikProjeModel.FK_TamirTeslim_Personel" ManuallyRouted="false" />
+        <AssociationConnector Association="TeknikProjeModel.FK_TamirTeslim_Personel1" ManuallyRouted="false" />
+        <AssociationConnector Association="TeknikProjeModel.FK_TamirTeslim_Personel2" ManuallyRouted="false" />
+        <AssociationConnector Association="TeknikProjeModel.FK_TamirTeslim_TamirDurum" ManuallyRouted="false" />
+        <AssociationConnector Association="TeknikProjeModel.FK_UygulamaMenuYetki_UygulamaMenu" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="TeknikProjeModel.PersonelLoginSession" Width="1.5" PointX="7.375" PointY="3.75" />
+        <AssociationConnector Association="TeknikProjeModel.FK_CihazTamirParca_Personel" />
+        <AssociationConnector Association="TeknikProjeModel.FK_TamirTeslim_Personel3" />
+        <AssociationConnector Association="TeknikProjeModel.FK_PersonelLoginSession_Personel" />
+        <EntityTypeShape EntityType="TeknikProjeModel.CihazKargoGonderim" Width="1.5" PointX="11" PointY="7.375" />
+        <AssociationConnector Association="TeknikProjeModel.FK_CihazKargoGonderim_Il" />
+        <AssociationConnector Association="TeknikProjeModel.FK_CihazKargoGonderim_Ilce" />
+        <AssociationConnector Association="TeknikProjeModel.FK_CihazKargoGonderim_KargoFirma" />
+        <AssociationConnector Association="TeknikProjeModel.FK_CihazKargoGonderim_Personel" />
+        <AssociationConnector Association="TeknikProjeModel.FK_CihazKargoGonderim_TamirTeslim" />
+        <EntityTypeShape EntityType="TeknikProjeModel.PerformansRapor" Width="1.5" PointX="9.375" PointY="3.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

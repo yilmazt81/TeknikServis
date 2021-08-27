@@ -1,0 +1,411 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0DA88AF2-18BF-44A4-8843-BA82B0BEB141}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Kdr.TeknikServis</RootNamespace>
+    <AssemblyName>Kdr.TeknikServis</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>idea51.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AxShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.6.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.6.1\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing.Common, Version=4.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Drawing.Common.5.0.2\lib\net461\System.Drawing.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=5.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.5.0.1\lib\net461\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=5.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.5.0.2\lib\net461\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="ThoughtWorks.QRCode, Version=1.0.4778.30637, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ThoughtWorks.QRCode.1.1.0\lib\ThoughtWorks.QRCode.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="clss\MessageBoxHelper.cs" />
+    <Compile Include="clss\PrintFormCreator.cs" />
+    <Compile Include="clss\TutanakPrint.cs" />
+    <Compile Include="controls\UserControlIslemBekleyen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="controls\UserControlIslemBekleyen.Designer.cs">
+      <DependentUpon>UserControlIslemBekleyen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="controls\UserControlKargoFirma.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="controls\UserControlKargoFirma.Designer.cs">
+      <DependentUpon>UserControlKargoFirma.cs</DependentUpon>
+    </Compile>
+    <Compile Include="controls\UserControlParcaBekleyen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="controls\UserControlParcaBekleyen.Designer.cs">
+      <DependentUpon>UserControlParcaBekleyen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="controls\UserControlPersonel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="controls\UserControlPersonel.Designer.cs">
+      <DependentUpon>UserControlPersonel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="controls\UserControlRaporlar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="controls\UserControlRaporlar.Designer.cs">
+      <DependentUpon>UserControlRaporlar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="controls\UserControlTeknikOnayBekleyen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="controls\UserControlTeknikOnayBekleyen.Designer.cs">
+      <DependentUpon>UserControlTeknikOnayBekleyen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="controls\UserControlUrunKargo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="controls\UserControlUrunKargo.Designer.cs">
+      <DependentUpon>UserControlUrunKargo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="controls\UserControlUrunParca.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="controls\UserControlUrunParca.Designer.cs">
+      <DependentUpon>UserControlUrunParca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="controls\UserControlUrunTeslimAl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="controls\UserControlUrunTeslimAl.Designer.cs">
+      <DependentUpon>UserControlUrunTeslimAl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\FormCargo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FormCargo.Designer.cs">
+      <DependentUpon>FormCargo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\FormGiveBackCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FormGiveBackCustomer.Designer.cs">
+      <DependentUpon>FormGiveBackCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\FormReportEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FormReportEdit.Designer.cs">
+      <DependentUpon>FormReportEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\FormReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FormReportViewer.Designer.cs">
+      <DependentUpon>FormReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\FormSelectDeviceItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FormSelectDeviceItem.Designer.cs">
+      <DependentUpon>FormSelectDeviceItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\FormSendCargo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FormSendCargo.Designer.cs">
+      <DependentUpon>FormSendCargo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\FormTamirTeslimEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FormTamirTeslimEdit.Designer.cs">
+      <DependentUpon>FormTamirTeslimEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\FormCihazParcaEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FormCihazParcaEdit.Designer.cs">
+      <DependentUpon>FormCihazParcaEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\FormEditPersonel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FormEditPersonel.Designer.cs">
+      <DependentUpon>FormEditPersonel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FormLogin.Designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\FormMusteriEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FormMusteriEdit.Designer.cs">
+      <DependentUpon>FormMusteriEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\FormSelectCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FormSelectCustomer.Designer.cs">
+      <DependentUpon>FormSelectCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\FormStartRepair.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FormStartRepair.Designer.cs">
+      <DependentUpon>FormStartRepair.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportForm\CrystalReportCargo.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReportCargo.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReportForm\CrystalReportPerformans.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReportPerformans.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReportForm\CrystalReportTutanak.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReportTutanak.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <EmbeddedResource Include="controls\UserControlIslemBekleyen.resx">
+      <DependentUpon>UserControlIslemBekleyen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="controls\UserControlKargoFirma.resx">
+      <DependentUpon>UserControlKargoFirma.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="controls\UserControlParcaBekleyen.resx">
+      <DependentUpon>UserControlParcaBekleyen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="controls\UserControlPersonel.resx">
+      <DependentUpon>UserControlPersonel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="controls\UserControlRaporlar.resx">
+      <DependentUpon>UserControlRaporlar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="controls\UserControlTeknikOnayBekleyen.resx">
+      <DependentUpon>UserControlTeknikOnayBekleyen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="controls\UserControlUrunKargo.resx">
+      <DependentUpon>UserControlUrunKargo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="controls\UserControlUrunParca.resx">
+      <DependentUpon>UserControlUrunParca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="controls\UserControlUrunTeslimAl.resx">
+      <DependentUpon>UserControlUrunTeslimAl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\FormCargo.resx">
+      <DependentUpon>FormCargo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\FormGiveBackCustomer.resx">
+      <DependentUpon>FormGiveBackCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\FormReportEdit.resx">
+      <DependentUpon>FormReportEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\FormReportViewer.resx">
+      <DependentUpon>FormReportViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\FormSelectDeviceItem.resx">
+      <DependentUpon>FormSelectDeviceItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\FormSendCargo.resx">
+      <DependentUpon>FormSendCargo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\FormTamirTeslimEdit.resx">
+      <DependentUpon>FormTamirTeslimEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\FormCihazParcaEdit.resx">
+      <DependentUpon>FormCihazParcaEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\FormEditPersonel.resx">
+      <DependentUpon>FormEditPersonel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\FormMusteriEdit.resx">
+      <DependentUpon>FormMusteriEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\FormSelectCustomer.resx">
+      <DependentUpon>FormSelectCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\FormStartRepair.resx">
+      <DependentUpon>FormStartRepair.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="ReportForm\CrystalReportCargo.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReportCargo.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportForm\CrystalReportPerformans.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReportPerformans.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportForm\CrystalReportTutanak.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReportTutanak.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\Kdr.DBLayer.CihazGonderimKargo.datasource" />
+    <None Include="Properties\DataSources\Kdr.DBLayer.CihazTamirAddCihazPersonelInfo.datasource" />
+    <None Include="Properties\DataSources\Kdr.DBLayer.Model.CihazParca.datasource" />
+    <None Include="Properties\DataSources\Kdr.DBLayer.Model.CihazTamirParca.datasource" />
+    <None Include="Properties\DataSources\Kdr.DBLayer.Model.KargoSube.datasource" />
+    <None Include="Properties\DataSources\Kdr.DBLayer.Model.Musteri.datasource" />
+    <None Include="Properties\DataSources\Kdr.DBLayer.Model.Personel.datasource" />
+    <None Include="Properties\DataSources\Kdr.DBLayer.Model.vTamirTeslim.datasource" />
+    <None Include="Properties\DataSources\Kdr.DBLayer.PerformansReportView.datasource" />
+    <None Include="Properties\DataSources\Kdr.DBLayer.vTamirTeslim.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Kdr.DBLayer\Kdr.DBLayer.csproj">
+      <Project>{36f0ad24-6be5-4e54-97d5-d1c99daaf99c}</Project>
+      <Name>Kdr.DBLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="idea51.ico" />
+    <Content Include="ReportForm\Logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\ScanDoc2.png" />
+    <None Include="Resources\05.png" />
+    <None Include="Resources\11.png" />
+    <None Include="Resources\UserBlue.png" />
+    <None Include="Resources\Process.png" />
+    <None Include="Resources\Remove.png" />
+    <None Include="Resources\23.png" />
+    <None Include="Resources\Setting2.png" />
+    <None Include="Resources\add.png" />
+    <None Include="Resources\Edit.png" />
+    <None Include="Resources\Query.png" />
+    <None Include="Resources\50.png" />
+    <None Include="Resources\Accept.png" />
+    <None Include="Resources\21.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
