@@ -7,15 +7,15 @@ Uygulamanın rapor bölümlerinde crystal reports kullanılmıştır , aşağıd
 
 https://www.crystalreports.com/crystal-reports-visual-studio/
 
-#Ana Ekran
+# Ana Ekran
 
 ![Ana Ekran](https://github.com/yilmazt81/TeknikServis/blob/main/Ekranlar/AnaAkran.png)
 
-#Cihaz Teslim Alam
+# Cihaz Teslim Alam
 
 ![Cihaz Teslim Alma](https://github.com/yilmazt81/TeknikServis/blob/main/Ekranlar/CihazTeslimAlma.png)
 
-#Teslim Tutanağı
+# Teslim Tutanağı
 
 ![Teslim Tutanak](https://github.com/yilmazt81/TeknikServis/blob/main/Ekranlar/TeslimTutanak.png)
 
